@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
     <nav class="navbar">
         <!-- LOGO -->
-        <div class="logo">CRIPTOCOIN</div>
+        <div class="logo"><img src="images/LogoBlanco.png" alt=""></div>
     
         <!-- NAVIGATION MENU -->
         <ul class="nav-links">
@@ -45,6 +47,51 @@
         </ul>
       </nav>
 
+      <div id="datos">Criptomonedas</div>
+
+      <!--Scripts-->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollex.min.js"></script>
+
+      <script>
+                const settings = {
+                    async: true,
+                    crossDomain: true,
+                    url: 'https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0',
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '64ece04b01msh85470598e5a401ep1aa9e0jsnbf616c56aa0d',
+                        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+                    }
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+
+                    const coins = response.data.coins;
+
+                    // Seleccionar el contenedor #datos
+                    const datosContainer = $("#datos");
+
+                    // Iterar sobre las primeras 20 criptomonedas
+                    for (let i = 0; i < 20; i++) {
+                        const coin = coins[i];
+                        // Crear un nuevo elemento div para cada criptomoneda
+                        const coinElement = $("<div>");
+                        coinElement.html(`
+                            <p>Criptoactivo: ${coin.name}</p>
+                            <p>Símbolo: ${coin.symbol}</p>
+                            <p>Precio: ${coin.price}</p>
+                            <p>Capitalización de mercado: ${coin.marketCap}</p>
+                            <img src="${coin.iconUrl}" alt="${coin.name}" style="max-width: 20px; max-height: 20px;">
+                        `);
+
+                        // Agregar el nuevo elemento de la criptomoneda al contenedor #datos
+                        datosContainer.append(coinElement);
+                    }
+                });
+
+      </script>
     <h1>Lista</h1>
 
     
