@@ -92,7 +92,7 @@ h1{
     }
 
     .menu .navbar{
-        position: relative;
+        position: absolute;
         top: 100%;
         left: 0;
         right: 0;
