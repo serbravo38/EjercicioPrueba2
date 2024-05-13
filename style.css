@@ -163,7 +163,7 @@
   .form-container {
     width: 100%;
     max-width: 400px; /* Limita el ancho máximo del formulario */
-    margin: 0 auto; /* Centra el formulario horizontalmente */
+    margin: 50px auto; /* Centra el formulario horizontalmente */
     background: linear-gradient(#212121, #212121) padding-box,
                 linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
