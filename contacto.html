@@ -6,7 +6,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: rgb(109, 109, 109);">
+<body>
 
     <nav class="navbar">
         <!-- LOGO -->
@@ -87,36 +87,58 @@
       
             // Verifica si el campo de nombre está vacío
             if (firstName === '') {
-              alert('Por favor ingresa tu nombre.');
+              showMessage('Por favor ingresa tu nombre.');
               return;
             }
       
             // Verifica si el campo de apellido está vacío
             if (lastName === '') {
-              alert('Por favor ingresa tu apellido.');
+              showMessage('Por favor ingresa tu apellido.');
               return;
             }
       
             // Verifica si el campo de correo electrónico está vacío
             if (email === '') {
-              alert('Por favor ingresa un correo de la compañía.');
+              showMessage('Por favor ingresa un correo de la compañía.');
+              return;
+            }
+      
+            // Verifica si el formato del correo electrónico es válido
+            if (!isValidEmail(email)) {
+              showMessage('Por favor ingresa un correo electrónico válido.');
               return;
             }
       
             // Verifica si el campo de texto está vacío
             if (textarea === '') {
-              alert('Por favor ingresa cómo podemos ayudarte.');
+              showMessage('Por favor ingresa cómo podemos ayudarte.');
               return;
             }
       
-            // Si todos los campos están llenos, puedes enviar el formulario
-            alert('El formulario se ha enviado correctamente.');
+            // Si todos los campos están llenos y el formato del correo es válido, puedes enviar el formulario
+            showMessage('El formulario se ha enviado correctamente.', 'success');
       
             // Reinicia el formulario
             $(this).trigger('reset');
           });
+      
+          function showMessage(message, type = 'error') {
+            var messageElement = $('<div>').addClass('message ' + type).text(message);
+            $('.form-container').append(messageElement);
+            setTimeout(function() {
+              messageElement.fadeOut('slow');
+            }, 3000);
+          }
+      
+          function isValidEmail(email) {
+            // Expresión regular para validar el formato del correo electrónico
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+          }
         });
       </script>
+      
+      
       
       
       
