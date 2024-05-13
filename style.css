@@ -179,10 +179,10 @@
 
   .form-container {
     width: 100%;
-    max-width: 400px; /* Limita el ancho máximo del formulario */
-    margin: 50px auto; /* Centra el formulario horizontalmente */
-    background: linear-gradient(#212121, #212121) padding-box,
-                linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+    max-width: 400px;
+    margin: 50px auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); /* Gradiente lineal con color transparente */
+                
     border: 2px solid transparent;
     padding: 32px 24px;
     font-size: 14px;
@@ -214,7 +214,7 @@
   .form-container .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #717171;
+    color: #ffffff;
     font-weight: 600;
     font-size: 12px;
   }
